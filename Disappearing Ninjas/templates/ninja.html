@@ -17,5 +17,8 @@
         {% if ninja_color == 'red' or ninja_color == null %}
         <img src="{{ url_for('static', filename='raphael.JPG') }}" style="width:304px;height:228px;">
         {% endif %}
+        {% if ninja_color != 'red' and ninja_color !='blue' and ninja_color !='orange' and ninja_color !='purple' and ninja_color != null %}
+        <img src="{{ url_for('static', filename='notapril.JPG') }}" style="width:304px;height:228px;">
+        {% endif %}
     </body>
 </html>
