@@ -1,7 +1,13 @@
 <html>
+    <head>
+        <title> Welcome to the Great Number Game! </title>
+    </head>
     <body>
-        <p>Guess the Number</p>
-        <input type = 'text' name = 'number'>
-        <input type='submit', value="submit", name='submit'>
+        <form action = '/result' method = 'post'>
+            <p>I am thinking of a number between 1 and 100</p>
+            <p>             Take a guess!                </p>
+            <input type = 'text' name = 'number'><br>
+            <input type='submit', value="submit", name='submit'>
+        </form>
     </body>
 </html>

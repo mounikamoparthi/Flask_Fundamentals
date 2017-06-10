@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session
 app = Flask(__name__)
 app.secret_key = 'hebflbbdvdbf'
 def sumSession(i):
-    try:
+    try: 
         session['counter'] += i 
     except KeyError:
         session['counter'] = 0
