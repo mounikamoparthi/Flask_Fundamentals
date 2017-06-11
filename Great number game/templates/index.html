@@ -3,11 +3,44 @@
         <title> Welcome to the Great Number Game! </title>
     </head>
     <body>
-        <form action = '/result' method = 'post'>
+        <div id = "wrapper">
+            <div id = "centralize">
             <p>I am thinking of a number between 1 and 100</p>
             <p>             Take a guess!                </p>
-            <input type = 'text' name = 'number'><br>
-            <input type='submit', value="submit", name='submit'>
-        </form>
-    </body>
+            <form action = '/result' method = 'post'>
+                <input type = 'text' name = 'number'><br>
+                <input type='submit' value = "submit">
+            </form>
+        
+            {% with wrong = get_flashed_messages(category_filter=["wrong"]) %}
+            {% if wrong %}
+            <p id="errormessages">{{ wrong }}</p>
+            {% endif %}
+            {% endwith %}
+
+            {% with toohigh = get_flashed_messages(category_filter=["toohigh"]) %}
+            {% if toohigh %}
+            <p id="toohigh">{{ toohigh }}</p>
+            {% endif %}
+            {% endwith %}
+
+            {% with toolow = get_flashed_messages(category_filter=["toolow"]) %}
+            {% if toolow %}
+            <p id="toolow">{{ toolow }}</p>
+            {% endif %}
+            {% endwith %}
+
+
+            {% with right = get_flashed_messages(category_filter=["right"]) %}
+            {% if right %}
+            <p id="rightmessages">{{ right }}</p>
+            <form action='/reset' method='post'>
+			<input type='submit' class="button" name='reset' value='Reset'>
+		    </form>
+            {% endif %}
+            {% endwith %}
+
+        </div>
+    </div>
+</body>
 </html>
