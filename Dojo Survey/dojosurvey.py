@@ -5,21 +5,21 @@ app.secret_key = 'keepitsecret'
 def index():
     return render_template("index.html") 
 @app.route('/process', methods=['POST'])
-def Dojosurvey():
+def req():
     if len(request.form['name']) < 1:
         flash("Name cannot be empty!")
-    else:
-        flash("Success! Your name is {}".format(request.form['name']))
-    if len(request.form['language']) < 1:
-        flash("language cannot be empty!")
-    else:
-        flash("Success! Your favlanguage is {}".format(request.form['language']))
+    if len(request.form['comment']) < 1:
+        flash("comment cannot be empty!")
+    elif len(request.form['comment']) > 120:
+        flash("Exceeded 120 characters")
     return redirect('/')
-    print request.form
+@app.route('/process', methods=['POST'])
+def Dojosurvey():
     name = request.form['name']
     location = request.form['location']
     language = request.form['language']
-    return render_template("result.html",name=name,location=location,language=language)  
+    comment = request.form['comment']
+    return render_template("result.html",name=name,location=location,language=language, comment=comment)    
 @app.route('/back', methods =['POST'])
 def backpage():
     index()
